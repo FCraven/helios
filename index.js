@@ -20,7 +20,9 @@ const getWeather =async ()=> {
             const lon= position.coords.longitude;
             console.log('lat',lat)
             console.log('lon', lon)
+            console.log('==============================================')
             console.log('==-key-> ', key)
+            console.log('==============================================')
 
           }
 
