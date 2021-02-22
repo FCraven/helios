@@ -30,12 +30,12 @@ const getWeather =async ()=> {
           }
 
         if(!navigator.geolocation) {
+          //do somthing here to handle for no geolocation
             console.log('Geolocation is not supported by your browser');
           } else {
             console.log('Locating…');
             await navigator.geolocation.getCurrentPosition(success, error);
           }
-
     } catch(err) {
         console.log(
             'Could not get coordinates from browser.'
@@ -45,6 +45,5 @@ const getWeather =async ()=> {
 }
 
 await getWeather()
-
 
 }
