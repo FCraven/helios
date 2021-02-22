@@ -15,7 +15,7 @@ const getWeather =async ()=> {
     try {
 
         function success(position) {
-            const key = GITHUB_DARK_SKY_API_KEY
+            const key = process.env.DARK_SKY_API_KEY;
             const lat = position.coords.latitude;
             const lon= position.coords.longitude;
             console.log('lat',lat)
