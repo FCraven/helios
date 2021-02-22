@@ -15,18 +15,17 @@ const getWeather =async ()=> {
     try {
 
         function success(position) {
-            const key = process.env.DARK_SKY_API_KEY;
             const lat = position.coords.latitude;
             const lon= position.coords.longitude;
             console.log('lat',lat)
             console.log('lon', lon)
-            console.log('==============================================')
-            console.log('==-key-> ', key)
-            console.log('==============================================')
-
+            fetch(`/api/weather?lat=${lat}&lon=${lon}`)
+            .then(res => res.json())
+            .then(data => console.log(data))
           }
 
           function error() {
+            //do something here that makes a nice landing screen and prompts user to search for weather
             console.log('Unable to retrieve your location');
           }
 
