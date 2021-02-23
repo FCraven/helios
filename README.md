@@ -9,6 +9,7 @@
 - CSS
 - The Dark Sky API
 - ExpressJS
+- LocalStorage
 
 ---
 ### To visit the deployed application please visit:
