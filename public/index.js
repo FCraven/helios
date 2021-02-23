@@ -22,6 +22,8 @@ window.onload =()=> {
       //5 day
       //hourly
       // by the minute?
+
+      //anime js?
       
     }
 
