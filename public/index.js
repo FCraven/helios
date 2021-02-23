@@ -14,9 +14,15 @@ window.onload =()=> {
       status.textContent = '';
       console.log(position);
 
+      //handle loading all DOM content here
 
-
-      //handle loading all DOM content here ,
+      //icon
+      //temp
+      //feels like
+      //5 day
+      //hourly
+      // by the minute?
+      
     }
 
   const error =()=> {
