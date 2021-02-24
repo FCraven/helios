@@ -9,10 +9,36 @@ const loadingSection = document.getElementById('loading-section')
 
 window.onload =()=> {
   const success = async (position)=> {
+      //Dependencies
+      const { latitude, longitude } = position.coords;
+      const iconsObject = {
+        'clear-day': '',
+        'clear-night': '',
+        'rain' : '',
+        'snow' : '',
+        'sleet' : '',
+        'wind' : '',
+        'fog': '',
+        'cloudy': '',
+        'partly-cloudy-day': '',
+        'partly-cloudy-night': ''
+      }
+
+      try{
+        const queryUrl = `/api/weather?lat=${latitude}&lon=${longitude}`;
+        const response = await fetch(queryUrl);
+        const data = await response.json();
+        console.log('fetched data--> ', data)
+        } catch(error) {
+          console.log('Error fetching weather data')
+        }
+
+
+
       //HIDE SPINNER
       loadingSection.style.display = 'none';
       status.textContent = '';
-      console.log(position);
+
 
       //handle loading all DOM content here
 
@@ -24,7 +50,7 @@ window.onload =()=> {
       // by the minute?
 
       //anime js?
-      
+
     }
 
   const error =()=> {
