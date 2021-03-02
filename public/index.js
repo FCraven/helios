@@ -43,19 +43,36 @@ window.onload =()=> {
       status.textContent = '';
 
 
-      const createCurrent =()=> {
+      const createCurrentWeather =()=> {
+
+        const rootDiv = document.getElementById('root')
+
           const { apparentTemperature: feelsLike, cloudCover, dewPoint,
                   humidity, icon, nearestStormBearing, nearestStormDistance,
                   ozone, precipIntensity, precipProbability, pressure, summary,
                   temperature, time, uvIndex, visibility, windBearing,
                   windGust, windSpeed } = forecast.currently
 
-        const currentContainer = document.createElement('section')
-        currentContainer.setAttribute('id', 'current-container')
-        // currentContainer.classList.add()
+
+
+                  const currentWeatherContainer = document.createElement('section')
+                  currentWeatherContainer.setAttribute('id','current-weather-container')
+                  currentWeatherContainer.classList.add('flex', 'justify-center', 'align-center')
 
 
 
+
+                  const img = document.createElement('img')
+                  const mainIcon = forecast.currently.icon
+                  img.setAttribute('src', iconsObject[mainIcon])
+                  img.setAttribute('height', '100px')
+                  img.setAttribute('width', '100px')
+                  img.style.backgroundColor = 'blue'
+
+                  currentWeatherContainer.appendChild(img)
+
+
+                  rootDiv.appendChild(currentWeatherContainer)
 
       //create a main view
             //current weather on top
@@ -67,20 +84,9 @@ window.onload =()=> {
       }
 
 
+      createCurrentWeather()
 
 
-
-
-        const img = document.createElement('img')
-        const mainIcon = forecast.currently.icon
-
-        console.log(forecast)
-
-        img.setAttribute('src', iconsObject[mainIcon])
-        img.setAttribute('height', '200px')
-        img.setAttribute('width', '200px')
-
-        document.getElementById('root').appendChild(img)
       //set forecast to localStorage?
 
       //handle loading all DOM content here
