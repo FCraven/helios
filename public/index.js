@@ -43,26 +43,42 @@ window.onload =()=> {
       status.textContent = '';
 
 
-      const createHero =()=> {
+      const createCurrent =()=> {
           const { apparentTemperature: feelsLike, cloudCover, dewPoint,
                   humidity, icon, nearestStormBearing, nearestStormDistance,
                   ozone, precipIntensity, precipProbability, pressure, summary,
                   temperature, time, uvIndex, visibility, windBearing,
                   windGust, windSpeed } = forecast.currently
 
-                  console.log('feelsLike--->', feelsLike)
+        const currentContainer = document.createElement('section')
+        currentContainer.setAttribute('id', 'current-container')
+        // currentContainer.classList.add()
+
+
+
+
+      //create a main view
+            //current weather on top
+            //middle nav bar to change content on the bottom
+            //daily / hourly / minutely
+            //flags/warnings?
+            //
+
       }
+
+
 
 
 
 
         const img = document.createElement('img')
         const mainIcon = forecast.currently.icon
-        console.table(Object.keys(forecast))
+
+        console.log(forecast)
 
         img.setAttribute('src', iconsObject[mainIcon])
-        img.setAttribute('height', '300px')
-        img.setAttribute('width', '500px')
+        img.setAttribute('height', '200px')
+        img.setAttribute('width', '200px')
 
         document.getElementById('root').appendChild(img)
       //set forecast to localStorage?

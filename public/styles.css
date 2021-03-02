@@ -14,9 +14,60 @@ body {
     width: 100vw;
     min-width: 100vw;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgba(240, 240, 240, 0.89);
+}
+
+#root {
+  min-height: 100%;
+  min-width: 100%;
+}
+
+/* FLEX SETTINGS*/
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column
+}
+
+.row {
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-between {
+  align-items: space-between;
+}
+
+.align-evenly {
+  align-items: space-evenly;
+}
+
+.align-around {
+  align-items: space-around;
 }
 
 .visible {
@@ -59,6 +110,10 @@ body {
     -ms-animation-duration: 4000ms;
     -ms-animation-iteration-count: infinite;
     -ms-animation-timing-function: linear;
+  }
+
+  #current-container {
+
   }
 
 
