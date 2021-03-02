@@ -14,15 +14,18 @@ window.onload =()=> {
       const { latitude, longitude } = position.coords;
       const iconsObject = {
         'clear-day': './svg/sun.svg',
-        'clear-night': '',
-        'rain' : '',
-        'snow' : '',
-        'sleet' : '',
-        'wind' : '',
-        'fog': '',
-        'cloudy': '',
-        'partly-cloudy-day': '',
-        'partly-cloudy-night': ''
+        'clear-night': './svg/clear-night.svg',
+        'rain' : './svg/cloudy-rain.svg',
+        'snow' : './svg/cloudy-snow.svg',
+        'sleet' : './svg/storm-rain.svg',
+        'wind' : './svg/cloudy-windy.svg',
+        'fog': './svg/cloud-warning.svg',
+        'cloudy': './svg/cloudy-heavy.svg',
+        'partly-cloudy-day': './svg/cloudy-partly-sunny.svg',
+        'partly-cloudy-night': './svg/partly-cloudy-night.svg',
+        'hail': './svg/cloudy-warning.svg',
+        'thunderstorm' : './svg/cloudy-lightning-severe.svg',
+        'tornado' : './svg/tornado.svg'
       }
 
       //FETCH FORECAST BASED ON USER LOCATION
@@ -44,7 +47,10 @@ window.onload =()=> {
 
 
         const img = document.createElement('img')
-        img.setAttribute('src', iconsObject['clear-day'])
+        const mainIcon = forecast.currently.icon
+        console.log('forecastObject ----->',forecast)
+
+        img.setAttribute('src', iconsObject[mainIcon])
         img.setAttribute('height', '300px')
         img.setAttribute('width', '500px')
 
