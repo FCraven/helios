@@ -30,25 +30,35 @@ window.onload =()=> {
 
       //FETCH FORECAST BASED ON USER LOCATION
       try{
-        const queryUrl = `/api/weather?lat=${latitude}&lon=${longitude}`;
-        const response = await fetch(queryUrl);
-        const data = await response.json();
-        forecast = data;
-        console.log('fetched data--> ', data)
+          const queryUrl = `/api/weather?lat=${latitude}&lon=${longitude}&units=auto`;
+          const response = await fetch(queryUrl);
+          const data = await response.json();
+          forecast = data;
         } catch(error) {
             console.log('Error fetching weather data')
         }
-
-        console.log('data after try/catch block -->> ', forecast)
 
       //HIDE SPINNER
       loadingSection.style.display = 'none';
       status.textContent = '';
 
 
+      const createHero =()=> {
+          const { apparentTemperature: feelsLike, cloudCover, dewPoint,
+                  humidity, icon, nearestStormBearing, nearestStormDistance,
+                  ozone, precipIntensity, precipProbability, pressure, summary,
+                  temperature, time, uvIndex, visibility, windBearing,
+                  windGust, windSpeed } = forecast.currently
+
+                  console.log('feelsLike--->', feelsLike)
+      }
+
+
+
+
         const img = document.createElement('img')
         const mainIcon = forecast.currently.icon
-        console.log('forecastObject ----->',forecast)
+        console.table(Object.keys(forecast))
 
         img.setAttribute('src', iconsObject[mainIcon])
         img.setAttribute('height', '300px')
@@ -69,7 +79,7 @@ window.onload =()=> {
 
       //anime js?
 
-      console.log(window.location)
+
 
     }
 
