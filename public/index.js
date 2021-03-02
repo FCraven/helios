@@ -13,7 +13,7 @@ window.onload =()=> {
       let forecast;
       const { latitude, longitude } = position.coords;
       const iconsObject = {
-        'clear-day': '',
+        'clear-day': './svg/sun.svg',
         'clear-night': '',
         'rain' : '',
         'snow' : '',
@@ -43,7 +43,16 @@ window.onload =()=> {
       status.textContent = '';
 
 
+        const img = document.createElement('img')
+        img.setAttribute('src', iconsObject['clear-day'])
+        img.setAttribute('height', '300px')
+        img.setAttribute('width', '500px')
+
+        document.getElementById('root').appendChild(img)
+      //set forecast to localStorage?
+
       //handle loading all DOM content here
+
 
       //icon
       //temp
@@ -53,6 +62,8 @@ window.onload =()=> {
       // by the minute?
 
       //anime js?
+
+      console.log(window.location)
 
     }
 
