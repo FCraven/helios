@@ -76,15 +76,25 @@ window.onload =()=> {
 
                   const currentWeatherData = document.createElement('section')
                   currentWeatherData.setAttribute('id','current-weather-data')
+                  currentWeatherData.classList.add('flex', 'justify-evenly', 'align-center')
 
                   Object.keys(forecast.currently).forEach(el => {
                     const dataContainer = document.createElement('article');
-                    dataContainer.style.width= '100px';
+                    dataContainer.style.width= '45vw';
                     dataContainer.style.height = '50px';
+                    dataContainer.style.border = '2px solid black';
+                    dataContainer.style.bordeRradius = '3px'
                     //create div for key and a separate div for value
                     const dataTitle = document.createElement('span');
                     dataTitle.textContent = `${el}`;
-                    dataTitle.classList.add('flex-center');
+                    dataTitle.style.padding = '5px'
+                    dataTitle.classList.add('flex', 'justify-flex-start', 'align-center');
+                    dataTitle.style.backgroundColor = 'lightgrey'
+                    dataTitle.style.height = '100%';
+                    dataTitle.style.width = '33%';
+
+
+
 
                     const dataValue = document.createElement('p')
                     dataValue.textContent = `${forecast.currently[el]}`
