@@ -69,33 +69,29 @@ window.onload =()=> {
 
 
 
-
-
-
                   const bottomWeatherContainer = document.createElement('section')
                   bottomWeatherContainer.setAttribute('id','bottom-weather-container')
                   bottomWeatherContainer.classList.add('flex', 'justify-evenly', 'align-center')
 
                   Object.keys(forecast.currently).forEach(el => {
+
                     const dataContainer = document.createElement('article');
-                    dataContainer.style.width= '45vw';
-                    dataContainer.style.height = '50px';
-                    dataContainer.style.border = '2px solid black';
-                    dataContainer.style.bordeRradius = '3px'
+                    dataContainer.classList.add('weather-data', 'flex', 'justify-between', 'align-center');
+
                     //create div for key and a separate div for value
                     const dataTitle = document.createElement('span');
-                    dataTitle.setAttribute('id', 'data-title')
+
                     dataTitle.textContent = `${el}`;
                     dataTitle.style.padding = '5px'
-                    dataTitle.classList.add('flex', 'justify-flex-start', 'align-center');
+                    dataTitle.classList.add('data-title', 'flex', 'justify-flex-start', 'align-center');
 
 
-                    const dataValue = document.createElement('p')
-                    dataValue.textContent = `${forecast.currently[el]}`
+                    const dataValue = document.createElement('p');
+                    dataValue.textContent = `${forecast.currently[el]}`;
+                    dataValue.classList.add('data-value');
 
-                    dataContainer.appendChild(dataTitle)
-                    dataContainer.appendChild(dataValue)
-                    dataContainer.classList.add('weather-data', 'flex', 'justify-between', 'align-center');
+                    dataContainer.appendChild(dataTitle);
+                    dataContainer.appendChild(dataValue);
                     bottomWeatherContainer.appendChild(dataContainer);
                   })
 
