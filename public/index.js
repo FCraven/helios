@@ -56,27 +56,25 @@ window.onload =()=> {
 
 
 
+                  //TOP PORTION WITH CURRENT WEATHER INFO
+                  const topWeatherContainer = document.createElement('section')
+                  topWeatherContainer.setAttribute('id','top-weather-container')
+                  topWeatherContainer.classList.add('flex', 'justify-evenly', 'align-center')
 
-                  const currentWeatherContainer = document.createElement('section')
-                  currentWeatherContainer.setAttribute('id','current-weather-container')
-                  currentWeatherContainer.classList.add('flex', 'justify-evenly', 'align-center')
-
-
-
-
+                  //ICON
                   const img = document.createElement('img');
                   const mainIcon = forecast.currently.icon;
                   img.setAttribute('src', iconsObject[mainIcon]);
-                  img.setAttribute('height', '150px');
-                  img.setAttribute('width', '150px');
-                  img.style.margin = '5px';
-                  img.style.padding = '15px';
-                  img.style.borderRadius = '1em';
+                  img.setAttribute('id','weather-icon')
 
 
-                  const currentWeatherData = document.createElement('section')
-                  currentWeatherData.setAttribute('id','current-weather-data')
-                  currentWeatherData.classList.add('flex', 'justify-evenly', 'align-center')
+
+
+
+
+                  const bottomWeatherContainer = document.createElement('section')
+                  bottomWeatherContainer.setAttribute('id','bottom-weather-container')
+                  bottomWeatherContainer.classList.add('flex', 'justify-evenly', 'align-center')
 
                   Object.keys(forecast.currently).forEach(el => {
                     const dataContainer = document.createElement('article');
@@ -86,14 +84,10 @@ window.onload =()=> {
                     dataContainer.style.bordeRradius = '3px'
                     //create div for key and a separate div for value
                     const dataTitle = document.createElement('span');
+                    dataTitle.setAttribute('id', 'data-title')
                     dataTitle.textContent = `${el}`;
                     dataTitle.style.padding = '5px'
                     dataTitle.classList.add('flex', 'justify-flex-start', 'align-center');
-                    dataTitle.style.backgroundColor = 'lightgrey'
-                    dataTitle.style.height = '100%';
-                    dataTitle.style.width = '33%';
-
-
 
 
                     const dataValue = document.createElement('p')
@@ -102,15 +96,16 @@ window.onload =()=> {
                     dataContainer.appendChild(dataTitle)
                     dataContainer.appendChild(dataValue)
                     dataContainer.classList.add('weather-data', 'flex', 'justify-between', 'align-center');
-                    currentWeatherData.appendChild(dataContainer);
+                    bottomWeatherContainer.appendChild(dataContainer);
                   })
 
-                  currentWeatherContainer.appendChild(img)
+                  topWeatherContainer.appendChild(img)
 
-                  rootDiv.appendChild(currentWeatherContainer)
-                  rootDiv.appendChild(currentWeatherData)
+                  rootDiv.appendChild(topWeatherContainer)
+                  rootDiv.appendChild(bottomWeatherContainer)
 
-
+                  const handleOrientation=(event)=> console.log('ORIENTATION EVENT---> ', event)
+                  window.addEventListener("deviceorientation", handleOrientation, true);
       //create a main view
             //current weather on top
             //middle nav bar to change content on the bottom

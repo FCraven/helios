@@ -118,7 +118,7 @@ body {
     -ms-animation-timing-function: linear;
   }
 
-  #current-weather-container {
+  #top-weather-container {
     border: 10px solid blue;
     position: absolute;
     top: 0;
@@ -127,12 +127,12 @@ body {
     bottom: 50%;
   }
 
-.weather-data {
-  color: blue;
-  font-size: .5em;
+#weather-icon {
+  height: 50%;
+  width: auto;
 }
 
-#current-weather-data {
+#bottom-weather-container{
   position: absolute;
   left: 0;
   right: 0;
@@ -141,9 +141,20 @@ body {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
 }
 
+.weather-data {
+  color: black;
+  font-size: .5em;
+  flex: auto;
+  margin: 5px;
+  border-radius: 3px;
+}
+#data-title{
+  background-color: lightgrey;
+  height: 100%;
+  width: 33%;
+}
 
 
 
@@ -191,3 +202,29 @@ body {
       -webkit-transform: rotate(360deg);
     }
   }
+
+
+  /* MEDIA QUERIES */
+@media only screen and (min-width: 600px){
+  #top-weather-container {
+    border: 10px solid blue;
+    position: fixed;
+    top: 0;
+    right: 50%;
+    left: 0;
+    bottom: 0
+  }
+
+  #bottom-weather-container{
+    position: absolute;
+    left: 50%;
+    right: 0;
+    top: 0;
+    border: 5px solid green;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: scroll;
+  }
+
+}
