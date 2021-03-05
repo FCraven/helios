@@ -178,7 +178,8 @@ body {
   background-color: transparent;
   backdrop-filter: sepia(10%);
   margin: 5px 10px;
-  box-shadow: 0px 0px 1px 0px;
+  box-shadow: 0px 1px 3px 1px;
+  border-radius: 1em;
 }
 
 .data-title {
@@ -187,20 +188,21 @@ body {
   border-right: 1px solid lightgrey;
   border-bottom: 1px solid lightgrey;
   display: flex;
-  flex: auto;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   flex-wrap: wrap;
   width: 40%;
-  height: 80%;
+  height: 100%;
   font-size: .8em;
-  margin: 5px;
-
+  margin: 2px;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
 }
 
 .data-value {
   height: 100%;
   width: 50%;
-
-
 }
 
 
@@ -240,7 +242,7 @@ body {
   }
 
   .weather-data {
-    height: 2.5em;
+    height: 4em;
 
   }
 
