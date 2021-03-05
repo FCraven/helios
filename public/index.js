@@ -12,6 +12,8 @@ window.onload =()=> {
       //Dependencies
       let forecast;
       const { latitude, longitude } = position.coords;
+
+      //icon dictionary for response object
       const iconsObject = {
         'clear-day': './svg/sun.svg',
         'clear-night': './svg/clear-night.svg',
@@ -28,6 +30,7 @@ window.onload =()=> {
         'tornado' : './svg/tornado.svg'
       }
 
+      //enter compass reading to get wind bearing
       const determineBearing =(bearing)=> {
         const b = bearing
         if(b > 348.75 && b <= 360 || b >=0 && b <= 11.25){
@@ -113,6 +116,12 @@ window.onload =()=> {
           let dataValue = document.createElement('p');
               dataValue.classList.add('data-value','flex','flex-auto', 'justify-center', 'align-center');
 
+          const appendChildren=(child1, child2, parent, grandparent)=> {
+            parent.appendChild(child1)
+            parent.appendChild(child2)
+            grandparent.appendChild(parent)
+          }
+
           switch(el){
 
             case 'icon':
@@ -124,19 +133,18 @@ window.onload =()=> {
             case 'windBearing':
 
               dataTitle.textContent = 'wind bearing';
-              dataValue.textContent = determineBearing(currentWeather[el])
-              dataContainer.appendChild(dataTitle);
-              dataContainer.appendChild(dataValue);
-              bottomWeatherContainer.appendChild(dataContainer);
+              dataValue.textContent = determineBearing(currentWeather[el]);
+              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
+              // dataContainer.appendChild(dataTitle);
+              // dataContainer.appendChild(dataValue);
+              // bottomWeatherContainer.appendChild(dataContainer);
               break;
 
             case 'temperature':
 
               dataTitle.textContent = 'temperature';
               dataValue.innerHTML = `${forecast.currently[el]} &#8457;`;
-              dataContainer.appendChild(dataTitle);
-              dataContainer.appendChild(dataValue);
-              bottomWeatherContainer.appendChild(dataContainer);
+              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
               break;
 
             case 'nearestStormDistance':
@@ -144,9 +152,7 @@ window.onload =()=> {
               const stormBearing = determineBearing(currentWeather['nearestStormBearing']);
               dataTitle.textContent = 'nearest storm'
               dataValue.textContent = `${currentWeather[el]} miles ${stormBearing}`
-              dataContainer.appendChild(dataTitle);
-              dataContainer.appendChild(dataValue);
-              bottomWeatherContainer.appendChild(dataContainer);
+              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
               break;
 
             case 'time':
@@ -155,36 +161,28 @@ window.onload =()=> {
               let slicedDate = date.toString().split(' ').slice(0,4).join(' ')
               dataTitle.textContent = `${el}`
               dataValue.textContent =`${slicedDate}`
-              dataContainer.appendChild(dataTitle);
-              dataContainer.appendChild(dataValue);
-              bottomWeatherContainer.appendChild(dataContainer);
+              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
               break;
 
             case 'precipProbability':
 
               dataTitle.textContent = 'Chance of Rain'
               dataValue.textContent = `${currentWeather[el]} %`
-              dataContainer.appendChild(dataTitle);
-              dataContainer.appendChild(dataValue);
-              bottomWeatherContainer.appendChild(dataContainer);
+              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
               break;
 
             case 'apparentTemperature':
 
               dataTitle.textContent = 'Feels Like: ';
               dataValue.innerHTML = `${forecast.currently[el]} &#8457;`;
-              dataContainer.appendChild(dataTitle);
-              dataContainer.appendChild(dataValue);
-              bottomWeatherContainer.appendChild(dataContainer);
+              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
               break;
 
             default:
 
               dataTitle.textContent = `${el}`
               dataValue.textContent = `${forecast.currently[el]}`;
-              dataContainer.appendChild(dataTitle);
-              dataContainer.appendChild(dataValue);
-              bottomWeatherContainer.appendChild(dataContainer);
+              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
           }
 
         })
