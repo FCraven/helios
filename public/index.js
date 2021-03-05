@@ -152,7 +152,7 @@ window.onload =()=> {
             case 'time':
 
               let date = new Date(currentWeather[el] * 1000)
-              let slicedDate = date.toString().split(' ').slice(0,4).join(',')
+              let slicedDate = date.toString().split(' ').slice(0,4).join(' ')
               dataTitle.textContent = `${el}`
               dataValue.textContent =`${slicedDate}`
               dataContainer.appendChild(dataTitle);
