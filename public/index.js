@@ -91,7 +91,7 @@ window.onload =()=> {
         //TOP PORTION WITH CURRENT WEATHER INFO
         const topWeatherContainer = document.createElement('section')
               topWeatherContainer.setAttribute('id','top-weather-container')
-              topWeatherContainer.classList.add('flex', 'justify-evenly', 'align-center')
+              topWeatherContainer.classList.add('flex', 'justify-evenly', 'align-center', 'column')
 
         //ICON
         const { icon } = currentWeather
@@ -99,18 +99,62 @@ window.onload =()=> {
               img.setAttribute('src', iconsObject[icon]);
               img.setAttribute('id','weather-icon')
 
+        //TEMPERATURE
+
+
+        //DETAILS
+
+
+
+        //NAVBAR
+        const navbar = document.createElement('nav');
+        navbar.classList.add('navbar','flex', 'flex-auto');
+
+        //add NOW,60, 24, 7
+        const navButtons = ['now',':60','24', '7'];
+        navButtons.forEach(el => {
+          let navButton = document.createElement('div');
+          navButton.textContent = el;
+          navButton.classList.add('flex-center','nav-button')
+          navButton.addEventListener('click', (evt)=> {
+            console.log(evt)
+          })
+          navbar.appendChild(navButton)
+        })
+
+        topWeatherContainer.appendChild(img)
+        topWeatherContainer.appendChild(navbar)
+
+
+
+
+
+
+
+
+
         const bottomWeatherContainer = document.createElement('section')
               bottomWeatherContainer.setAttribute('id','bottom-weather-container')
               bottomWeatherContainer.classList.add('flex', 'justify-center', 'align-center')
 
+
+
+
+
+
+
         Object.keys(currentWeather).forEach(el => {
           //WEATHER DATA CONTAINER
           let dataContainer = document.createElement('article');
-              dataContainer.classList.add('weather-data', 'flex', 'justify-between', 'align-center', 'flex-auto');
+              dataContainer.classList.add('weather-data', 'flex', 'justify-between', 'align-center');
+              // flex-auto
 
           //Title
           let dataTitle = document.createElement('span');
               dataTitle.classList.add('data-title', 'flex-auto');
+
+          // let summary = document.createElement('summary');
+          // let description = document.createElement('p')
 
           //value
           let dataValue = document.createElement('p');
@@ -131,6 +175,12 @@ window.onload =()=> {
               break;
 
             case 'windBearing':
+
+              // summary.textContent = 'Wind Bearing'
+              // description.textContent = 'The direction that the wind is coming from'
+
+              // dataTitle.appendChild(summary);
+              // dataTitle.appendChild(description);
 
               dataTitle.textContent = 'wind bearing';
               dataValue.textContent = determineBearing(currentWeather[el]);
@@ -187,7 +237,6 @@ window.onload =()=> {
 
         })
 
-                  topWeatherContainer.appendChild(img)
 
                   rootDiv.appendChild(topWeatherContainer)
                   rootDiv.appendChild(bottomWeatherContainer)
