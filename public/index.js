@@ -15,18 +15,18 @@ window.onload =()=> {
 
       //icon dictionary for response object
       const iconsObject = {
-        'clear-day': './svg/sun.svg',
+        'clear-day': './svg/clear-day.svg',
         'clear-night': './svg/clear-night.svg',
-        'rain' : './svg/cloudy-rain.svg',
-        'snow' : './svg/cloudy-snow.svg',
-        'sleet' : './svg/storm-rain.svg',
-        'wind' : './svg/cloudy-windy.svg',
-        'fog': './svg/cloud-warning.svg',
-        'cloudy': './svg/cloudy-heavy.svg',
-        'partly-cloudy-day': './svg/cloudy-partly-sunny.svg',
+        'rain' : './svg/rain.svg',
+        'snow' : './svg/snow.svg',
+        'sleet' : './svg/sleet.svg',
+        'wind' : './svg/wind.svg',
+        'fog': './svg/cloudy.svg',
+        'cloudy': './svg/cloudy.svg',
+        'partly-cloudy-day': './svg/partly-cloudy-day.svg',
         'partly-cloudy-night': './svg/partly-cloudy-night.svg',
-        'hail': './svg/cloudy-warning.svg',
-        'thunderstorm' : './svg/cloudy-lightning-severe.svg',
+        'hail': './svg/hail.svg',
+        'thunderstorm' : './svg/thunderstorm.svg',
         'tornado' : './svg/tornado.svg'
       }
 
