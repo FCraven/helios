@@ -188,6 +188,14 @@ body {
 
 
 
+.nav-button:active {
+  background-color: rgba(0, 0, 0, 0.555);
+  color: lightgrey;
+  border-color: #f1f1f183;
+}
+
+
+
 
 
 
@@ -224,6 +232,8 @@ body {
   border-radius: 1em;
 }
 
+
+
 .data-title {
 
   background-color: lightgrey;
@@ -240,6 +250,7 @@ body {
   margin: 2px;
   border-top-left-radius: 1em;
   border-bottom-left-radius: 1em;
+  border-right: 5px double slategrey;
 }
 
 .data-value {
