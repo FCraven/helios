@@ -106,12 +106,13 @@ window.onload =()=> {
 
 
 
+
         //NAVBAR
         const navbar = document.createElement('nav');
         navbar.classList.add('navbar','flex', 'flex-auto');
 
-        //add NOW,60, 24, 7
-        const navButtons = ['now',':60','24', '7'];
+        //add NOW,60, 24, 7, SEARCH
+        const navButtons = ['now',':60','24hr', '7-day', 'Search'];
         navButtons.forEach(el => {
           let navButton = document.createElement('div');
           navButton.textContent = el;
