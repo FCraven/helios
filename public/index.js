@@ -87,7 +87,7 @@ window.onload =()=> {
 
         const rootDiv = document.getElementById('root')
         const currentWeather = forecast.currently;
-        console.log('-currweather--> ' , currentWeather)
+        console.log('-currweather--> ' , forecast)
 
         //TOP PORTION WITH CURRENT WEATHER INFO
         const topWeatherContainer = document.createElement('section')
@@ -100,28 +100,51 @@ window.onload =()=> {
               img.setAttribute('src', iconsObject[icon]);
               img.setAttribute('id','weather-icon')
 
-        //TEMPERATURE
+        //TIME TEMPERATURE
         const temperatureEl = document.createElement('article');
               temperatureEl.setAttribute('id', 'temperature-container')
-        const { temperature, apparentTemperature: feelsLike } = currentWeather;
+        const { temperature, apparentTemperature: feelsLike, time } = currentWeather;
 
-          const realTempEl = document.createElement('data')
+        const humanReadableDate = new Date(time*1000).toDateString();
+        const humanReadableTime = new Date(time*1000).toTimeString();
+
+        const timeSplit = humanReadableTime.split(' ')
+        console.log(timeSplit)
+
+          const dateEl = document.createElement('time');
+                dateEl.setAttribute('id', 'date');
+                dateEl.setAttribute('datetime', time);
+                dateEl.textContent = humanReadableDate;
+
+          const timeEl = document.createElement('time');
+                timeEl.setAttribute('id', 'time');
+                timeEl.setAttribute('dateTime', time);
+                timeEl.textContent = `${timeSplit[0]} ${timeSplit[2]}`;
+
+
+
+
+          const realTempEl = document.createElement('data');
                 realTempEl.setAttribute('id', 'real-temp');
-                realTempEl.setAttribute('value', `The current temperature is ${temperature} degrees.`)
-                realTempEl.textContent = currentWeather.temperature;
+                realTempEl.setAttribute('value', `The current temperature is ${temperature} degrees.`);
+                realTempEl.innerHTML = `${temperature} &#8457;`;
 
           const feelsLikeEl = document.createElement('data')
                 feelsLikeEl.setAttribute('id', 'feels-like-temp');
                 feelsLikeEl.setAttribute('value', `The temperature currently feels like ${feelsLike} degrees.`)
                 feelsLikeEl.textContent = `Feels Like: ${feelsLike}`;
 
-
-          temperatureEl.appendChild(realTempEl);
-          temperatureEl.appendChild(feelsLikeEl)
+        temperatureEl.appendChild(dateEl)
+        temperatureEl.appendChild(timeEl);
+        temperatureEl.appendChild(realTempEl);
+        temperatureEl.appendChild(feelsLikeEl)
 
 
         //DETAILS
-
+          //Time
+          //Summary
+          //Nearest Storm
+          //Chance of Rain
 
 
 
@@ -136,7 +159,7 @@ window.onload =()=> {
           navButton.textContent = el;
           navButton.classList.add('flex-center','nav-button')
           navButton.addEventListener('click', (evt)=> {
-            console.log(evt);
+            // console.log(evt);
           })
           navbar.appendChild(navButton);
         })
