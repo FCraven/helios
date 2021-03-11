@@ -24,17 +24,15 @@ body {
 
 #root {
   min-height: 100%;
+  height: 100%;
   min-width: 100%;
+  width: 100%;
 }
 
 /* FLEX SETTINGS*/
-.flex {
-  display: flex;
-}
+.flex { display: flex; }
 
-.flex-auto {
-  flex: auto;
-}
+.flex-auto { flex: auto; }
 
 .flex-center {
   display: flex;
@@ -42,69 +40,32 @@ body {
   align-items: center;
 }
 
-.column {
-  flex-direction: column
-}
+.column { flex-direction: column; }
+.row {flex-direction: row;}
 
-.row {
-  flex-direction: row;
-}
+/* JUSTIFY */
+.justify-center { justify-content: center; }
+.justify-flex-start { justify-content: flex-start; }
+.justify-flex-end { justify-content: flex-end; }
+.justify-between { justify-content: space-between; }
+.justify-evenly { justify-content: space-evenly; }
+.justify-around { justify-content: space-around; }
 
-.justify-center {
-  justify-content: center;
-}
+/* ALIGN */
+.align-center {align-items: center; }
+.align-flex-start { align-items: flex-start; }
+.align-flex-end { align-items: flex-end; }
+.align-between { align-items: space-between; }
+.align-evenly { align-items: space-evenly; }
+.align-around { align-items: space-around; }
 
-.justify-flex-start {
-  justify-content: flex-start;
-}
+/* VISIBILITY */
+.visible {display: 'visible'; }
+.none { display: 'none'; }
 
-.justify-flex-end {
-  justify-content: flex-end;
-}
 
-.justify-between {
-  justify-content: space-between;
-}
 
-.justify-evenly {
-  justify-content: space-evenly;
-}
 
-.justify-around {
-  justify-content: space-around;
-}
-
-.align-center {
-  align-items: center;
-}
-
-.align-flex-start {
-  align-items: flex-start;
-}
-
-.align-flex-end {
-  align-items: flex-end;
-}
-
-.align-between {
-  align-items: space-between;
-}
-
-.align-evenly {
-  align-items: space-evenly;
-}
-
-.align-around {
-  align-items: space-around;
-}
-
-.visible {
-    display: 'visible';
-}
-
-.none {
-    display: 'none';
-}
 #status {
     font-size: .6em;
 }
@@ -144,10 +105,11 @@ body {
   #top-weather-container {
     position: fixed;
     display: grid;
-    grid-template-rows: 85% 15%;
-    grid-template-columns: 1fr;
-    grid-template-areas: "content"
-                          "navbar";
+    grid-template-rows: 42% 42% 16%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "content temperature"
+                          "something else"
+                          "navbar navbar";
     top: 0;
     right: 0;
     left: 0;
@@ -162,12 +124,31 @@ body {
 
 #weather-icon {
   grid-area: content;
-  display: grid;
-  place-self: center;
-  border: 3px solid green;
-  height: 20%;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: auto;
+  max-height: 70%;
 }
+
+#temperature-container {
+  grid-area: temperature;
+  height: 75%;
+  display: flex;
+  flex: auto;
+  flex-flow: column wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#real-temp {
+  font-size: calc(1em + 3vw);
+}
+
+#feels-like-temp {
+  font-size: calc(3px + 1vw);
+}
+
 
 .navbar {
   grid-area: navbar;
@@ -262,7 +243,7 @@ body {
 
 
 /* MEDIA QUERIES */
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 992px){
   /* PHONE LANDSCAPE */
 
   #top-weather-container {
@@ -293,9 +274,6 @@ body {
     height: 4em;
     margin: 1em 0;
   }
-
-
-
 }
 
 /* ANIMATIONS */

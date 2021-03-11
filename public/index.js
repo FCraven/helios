@@ -32,7 +32,7 @@ window.onload =()=> {
 
       //enter compass reading to get wind bearing
       const determineBearing =(bearing)=> {
-        const b = bearing
+        const b = bearing;
         if(b > 348.75 && b <= 360 || b >=0 && b <= 11.25){
             return 'North'
         } else if(b > 11.25 && b <= 33.75){
@@ -87,6 +87,7 @@ window.onload =()=> {
 
         const rootDiv = document.getElementById('root')
         const currentWeather = forecast.currently;
+        console.log('-currweather--> ' , currentWeather)
 
         //TOP PORTION WITH CURRENT WEATHER INFO
         const topWeatherContainer = document.createElement('section')
@@ -100,6 +101,23 @@ window.onload =()=> {
               img.setAttribute('id','weather-icon')
 
         //TEMPERATURE
+        const temperatureEl = document.createElement('article');
+              temperatureEl.setAttribute('id', 'temperature-container')
+        const { temperature, apparentTemperature: feelsLike } = currentWeather;
+
+          const realTempEl = document.createElement('data')
+                realTempEl.setAttribute('id', 'real-temp');
+                realTempEl.setAttribute('value', `The current temperature is ${temperature} degrees.`)
+                realTempEl.textContent = currentWeather.temperature;
+
+          const feelsLikeEl = document.createElement('data')
+                feelsLikeEl.setAttribute('id', 'feels-like-temp');
+                feelsLikeEl.setAttribute('value', `The temperature currently feels like ${feelsLike} degrees.`)
+                feelsLikeEl.textContent = `Feels Like: ${feelsLike}`;
+
+
+          temperatureEl.appendChild(realTempEl);
+          temperatureEl.appendChild(feelsLikeEl)
 
 
         //DETAILS
@@ -118,13 +136,15 @@ window.onload =()=> {
           navButton.textContent = el;
           navButton.classList.add('flex-center','nav-button')
           navButton.addEventListener('click', (evt)=> {
-            console.log(evt)
+            console.log(evt);
           })
-          navbar.appendChild(navButton)
+          navbar.appendChild(navButton);
         })
 
-        topWeatherContainer.appendChild(img)
-        topWeatherContainer.appendChild(navbar)
+        topWeatherContainer.appendChild(img);
+        topWeatherContainer.appendChild(temperatureEl);
+        topWeatherContainer.appendChild(navbar);
+
 
 
 
@@ -226,7 +246,7 @@ window.onload =()=> {
 
               dataTitle.textContent = 'Feels Like: ';
               dataValue.innerHTML = `${forecast.currently[el]} &#8457;`;
-              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
+              appendChildren(dataTitle, dataValue, dataContainer, bottomWeatherContainer);
               break;
 
             default:
