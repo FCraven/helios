@@ -127,7 +127,7 @@ window.onload =()=> {
           const realTempEl = document.createElement('data');
                 realTempEl.setAttribute('id', 'real-temp');
                 realTempEl.setAttribute('value', `The current temperature is ${temperature} degrees.`);
-                realTempEl.innerHTML = `${temperature} &#8457;`;
+                realTempEl.innerHTML = `${temperature}&#8457;`;
 
           const feelsLikeEl = document.createElement('data')
                 feelsLikeEl.setAttribute('id', 'feels-like-temp');
@@ -215,6 +215,9 @@ window.onload =()=> {
             case 'icon':
               break;
 
+            case 'time':
+              break;
+
             case 'nearestStormBearing':
               break;
 
@@ -246,15 +249,6 @@ window.onload =()=> {
               const stormBearing = determineBearing(currentWeather['nearestStormBearing']);
               dataTitle.textContent = 'nearest storm'
               dataValue.textContent = `${currentWeather[el]} miles ${stormBearing}`
-              appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
-              break;
-
-            case 'time':
-
-              let date = new Date(currentWeather[el] * 1000)
-              let slicedDate = date.toString().split(' ').slice(0).join(' ')
-              dataTitle.textContent = `${el}`
-              dataValue.textContent =`${slicedDate}`
               appendChildren(dataTitle,dataValue, dataContainer,bottomWeatherContainer);
               break;
 
