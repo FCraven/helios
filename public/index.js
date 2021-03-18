@@ -83,6 +83,9 @@ window.onload =()=> {
       status.textContent = '';
 
 
+
+
+
       const createCurrentWeather =()=> {
 
         const rootDiv = document.getElementById('root')
@@ -95,10 +98,26 @@ window.onload =()=> {
               topWeatherContainer.classList.add('flex', 'justify-evenly', 'align-center', 'column')
 
         //ICON
+
+
+        const { summary } = currentWeather
+
+        const iconSummaryEl = document.createElement('section');
+              iconSummaryEl.setAttribute('id', 'icon-summary-container')
+
         const { icon } = currentWeather
-        const img = document.createElement('img');
-              img.setAttribute('src', iconsObject[icon]);
-              img.setAttribute('id','weather-icon')
+        const weatherIconEl = document.createElement('img');
+              weatherIconEl.setAttribute('src', iconsObject[icon]);
+              weatherIconEl.setAttribute('id','weather-icon')
+
+
+        const summaryEl = document.createElement('h3');
+        summaryEl.textContent = summary;
+
+        iconSummaryEl.appendChild(weatherIconEl)
+        iconSummaryEl.appendChild(summaryEl)
+
+
 
         //TIME TEMPERATURE
         const temperatureEl = document.createElement('article');
@@ -120,9 +139,6 @@ window.onload =()=> {
                 timeEl.setAttribute('id', 'time');
                 timeEl.setAttribute('dateTime', time);
                 timeEl.textContent = `${timeSplit[0]} ${timeSplit[2]}`;
-
-
-
 
           const realTempEl = document.createElement('data');
                 realTempEl.setAttribute('id', 'real-temp');
@@ -164,7 +180,10 @@ window.onload =()=> {
           navbar.appendChild(navButton);
         })
 
-        topWeatherContainer.appendChild(img);
+
+
+
+        topWeatherContainer.appendChild(iconSummaryEl);
         topWeatherContainer.appendChild(temperatureEl);
         topWeatherContainer.appendChild(navbar);
 
