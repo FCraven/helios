@@ -112,6 +112,7 @@ window.onload =()=> {
 
 
         const summaryEl = document.createElement('h3');
+        summaryEl.setAttribute('id', 'current-weather-summary')
         summaryEl.textContent = summary;
 
         iconSummaryEl.appendChild(weatherIconEl)
