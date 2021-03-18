@@ -298,8 +298,6 @@ window.onload =()=> {
                   rootDiv.appendChild(topWeatherContainer)
                   rootDiv.appendChild(bottomWeatherContainer)
 
-                  const handleOrientation=(event)=> console.log('ORIENTATION EVENT---> ', event)
-                  window.addEventListener("deviceorientation", handleOrientation, true);
       //create a main view
             //current weather on top
             //middle nav bar to change content on the bottom
